@@ -29,9 +29,9 @@ def load_xml(path: Path, kind: str) -> ET._ElementTree:
     try:
         return ET.parse(str(path), parser=make_secure_parser())
     except ET.XMLSyntaxError as e:
-        raise RuntimeError(f"{kind} is not well-formed XML: {e}") from e
+        raise RuntimeError(f"[Error] {kind} is not well-formed XML: {e}") from e
     except OSError as e:
-        raise RuntimeError(f"Cannot read {kind} at {path}: {e}") from e
+        raise RuntimeError(f"[Error] Cannot read {kind} at {path}: {e}") from e
 
 # We're mimicking the effect of a real-world environment where schemas come from an external regulator, so we can't alter the official files
 def rewrite_schema_imports_in_memory(xsd_tree: ET._ElementTree, schema_dir: Path) -> ET._ElementTree:
@@ -71,7 +71,7 @@ def compile_schema(xsd_tree: ET._ElementTree) -> ET.XMLSchema:
         xsd_doc = ET.fromstring(xsd_bytes, parser=parser)
         return ET.XMLSchema(xsd_doc)
     except ET.XMLSchemaParseError as e:
-        lines = [f"Schema compilation failed ({len(e.error_log)} issue(s)):"]
+        lines = [f"[Error] Schema compilation failed ({len(e.error_log)} issue(s)):"]
         for i, entry in enumerate(e.error_log, 1):
             lines.append(f"  {i}. Line {entry.line}, Col {entry.column}: {entry.message}")
         raise RuntimeError("\n".join(lines)) from e
