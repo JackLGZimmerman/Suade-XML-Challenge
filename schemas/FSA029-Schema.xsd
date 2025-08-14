@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    ****************************************************************************************************
+    *                                                                 
+    *    Schema for: Data Item FSA029-BalanceSheet                    
+    *                                                                 
+    *    Version:   4
+    *    Date:      28 June 2022                                 
+    *                                                                 
+    *    History:   Version 4 changes the CommonTypes-Schema to Version 14 and removes the SDS003-Schema
+    *
+    *               Version 3 adds "GroupInfo" element to allow group reporting 
+    
+    *               Version 2 changes the CurrentLiabilities element to minOccurs="1"
+    *                   
+    *               Version 1 follows publication of legal instruments 2007/10 and 2007/45            
+    *                                                                 
+    ****************************************************************************************************
+-->
+
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    elementFormDefault="qualified" 
+    attributeFormDefault="unqualified" 
+    
+    targetNamespace="urn:fsa-gov-uk:MER:FSA029:4"
+    xmlns=          "urn:fsa-gov-uk:MER:FSA029:4" 
+    xmlns:mer-meta= "urn:fsa-gov-uk:MER:Meta-Data:2" 
+    
+    version="4" 
+    id="MER-FSA029">
+    
+    <xs:annotation>
+        <xs:documentation>
+            <mer-meta:DataItemReference>FSA029</mer-meta:DataItemReference>
+            <mer-meta:DataItemName>Balance Sheet</mer-meta:DataItemName>
+        </xs:documentation>
+    </xs:annotation>
+    
+    <xs:include schemaLocation="../../CommonTypes/v14/CommonTypes-Schema.xsd"/>
+
+    <xs:element name="FSA029-BalanceSheet">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="GroupInfo" type="GroupFRNStructure" minOccurs="0"/>
+                
+                <xs:element name="FixedAssets"            minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="IntangibleAssets" type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="TangibleAssets"   type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="Investments"      type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="TotalFixedAssets" type="MonetaryType" minOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="CurrentAssets"          minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="StocksInvestments" type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="TradeDebtors"      minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Within90" type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="After90"  type="MonetaryType" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>    
+                            <xs:element name="NonTradeDebtors"  type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="SundryDebtors"    type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="LoansOtherAssets" type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="Cash"             minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="Segregated"    type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="NonSegregated" type="MonetaryType" minOccurs="0"/>                                       
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="TotalCurrentAssets" type="MonetaryType" minOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="CurrentLiabilities"     minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Creditors"        type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="SundryCreditors"  type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="Accruals"         type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="LoansWithin1year" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="BankLoansSegregated"    type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="BankLoansNonSegregated" type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="ShortTermSubLoan"       type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="LongTermSubLoan"        type="MonetaryType" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="Total" type="MonetaryType" minOccurs="1"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+
+                <xs:element name="NetCurrentAssets"       type="MonetaryType" minOccurs="1"/>
+                                
+                <xs:element name="LongTermLiabilities"    minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Creditors"       type="MonetaryType" minOccurs="0"/>
+                            <xs:element name="LoansAfter1year" minOccurs="0">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="BankLoansSegregated"    type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="BankLoansNonSegregated" type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="ShortTermSubLoan"       type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="LongTermSubLoan"        type="MonetaryType" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="TotalLongTermLiabilities" type="MonetaryType" minOccurs="1" />
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="TotalAssetsLiabilities" type="MonetaryType" minOccurs="1" />
+                
+                <xs:element name="Capital"                minOccurs="1">
+                    <xs:complexType>
+                        <xs:choice>
+                            
+                            <xs:element name="IncorporatedEntities" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="OrdinaryShares"                type="NonNegativeMonetaryType" minOccurs="0"/>
+                                        <xs:element name="NonCumulativePreferenceShares" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Fixed"    type="NonNegativeMonetaryType" minOccurs="0"/>
+                                                    <xs:element name="NonFixed" type="NonNegativeMonetaryType" minOccurs="0"/>                                                   
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="CumulativePreferenceShares" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="Fixed"    type="NonNegativeMonetaryType" minOccurs="0"/>
+                                                    <xs:element name="NonFixed" type="NonNegativeMonetaryType" minOccurs="0"/>
+                                                    <xs:element name="Total"    type="NonNegativeMonetaryType" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="SharePremiumAccount"   type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="OtherReserves"         type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="RevaluationReserve"    type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="RetainedEarnings"      type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="ProfitLossCurrentYear" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="ExternallyVerified"       type="MonetaryType" minOccurs="0" />
+                                                    <xs:element name="UnverifiedTradingBook"    type="MonetaryType" minOccurs="0" />
+                                                    <xs:element name="UnverifiedNonTradingBook" type="MonetaryType" minOccurs="0" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="TotalCapital"    type="MonetaryType"             minOccurs="1"/>
+                                        <xs:element name="OffBalanceSheet" type="OffBalanceSheetStructure" minOccurs="0"/>
+                                     </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+             
+                            <xs:element name="PartnershipsSoleTraders" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="CapitalAccount"            type="MonetaryType" minOccurs="1"/>
+                                        <xs:element name="RetainedEarnings"          type="MonetaryType" minOccurs="0"/>
+                                        <xs:element name="CurrentAccountCurrentYear" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="ExternallyVerified"       type="MonetaryType" minOccurs="0"/>
+                                                    <xs:element name="UnverifiedTradingBook"    type="MonetaryType" minOccurs="0"/>
+                                                    <xs:element name="UnverifiedNonTradingBook" type="MonetaryType" minOccurs="0"/>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="TotalCapital"    type="MonetaryType" minOccurs="1"/>
+                                        <xs:element name="OffBalanceSheet" type="OffBalanceSheetStructure" minOccurs="0"/>
+                                     </xs:sequence>
+                                </xs:complexType> 
+                            </xs:element>
+                            
+                            <xs:element name="LLPs" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="PartnersCashCapitalAccounts" type="MonetaryType" minOccurs="1"/>
+                                        <xs:element name="PartnersCurrentAccounts"     type="MonetaryType" minOccurs="1"/>
+                                        <xs:element name="TotalPartnersCapital"        type="MonetaryType" minOccurs="1"/>
+                                        <xs:element name="OffBalanceSheet" type="OffBalanceSheetStructure" minOccurs="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            
+                        </xs:choice>
+                    </xs:complexType>
+                </xs:element>             
+            </xs:sequence> 
+            <xs:attribute name="reportingBasis" type="ReportingBasisType" use="required"/>
+            <xs:attributeGroup ref="CurrencyAndUnitsAttrGroup"/>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:complexType name="OffBalanceSheetStructure">
+        <xs:sequence>
+            <xs:element name="Item" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element name="ItemType" minOccurs="1">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="Structured Products"/>
+                                    <xs:enumeration value="OTCs"/>
+                                    <xs:enumeration value="Derivatives"/>
+                                    <xs:enumeration value="Operating Leases"/>
+                                    <xs:enumeration value="Offshore Entities"/>
+                                    <xs:enumeration value="Securitised Transactions"/>
+                                    <xs:enumeration value="Other"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:element>
+                        <xs:element name="Value"    type="MonetaryType" minOccurs="1"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+                
+</xs:schema>

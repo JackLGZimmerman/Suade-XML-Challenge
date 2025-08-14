@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<FSA029-BalanceSheet
+    xmlns:xsi=          "http://www.w3.org/2001/XMLSchema-instance"
+    xmlns=              "urn:fsa-gov-uk:MER:FSA029:4"
+    xsi:schemaLocation= "urn:fsa-gov-uk:MER:FSA029:4 http://www.fsa.gov.uk/MER/DRG/FSA029/v4/FSA029-Schema.xsd"
+ 	
+	reportingBasis="Investment firm group"    
+	currency= "GBP"
+    	units=    "thousands">
+
+    <GroupInfo>
+        <OtherGroupFirms>
+            <FirmReferenceNumber>123456</FirmReferenceNumber>
+            <FirmReferenceNumber>234567</FirmReferenceNumber>
+        </OtherGroupFirms>
+    </GroupInfo>
+
+    <FixedAssets>
+        <IntangibleAssets>58530</IntangibleAssets>
+        <TangibleAssets>24000</TangibleAssets>
+        <Investments>8000</Investments>
+        <TotalFixedAssets>90530</TotalFixedAssets>
+    </FixedAssets>
+    
+    <CurrentAssets>
+        <StocksInvestments>1000</StocksInvestments>
+        <TradeDebtors>
+            <Within90>200</Within90>
+            <After90>450</After90>
+        </TradeDebtors>
+        <NonTradeDebtors>150</NonTradeDebtors>
+        <SundryDebtors>50</SundryDebtors>
+        <LoansOtherAssets>100</LoansOtherAssets>
+        <Cash>
+            <Segregated>250</Segregated>
+            <NonSegregated>150</NonSegregated>
+        </Cash>
+        <TotalCurrentAssets>2350</TotalCurrentAssets>
+    </CurrentAssets>
+
+    <CurrentLiabilities>
+        <Creditors>120</Creditors>
+        <SundryCreditors>0</SundryCreditors>
+        <Accruals>30</Accruals>
+        <LoansWithin1year>
+            <BankLoansSegregated>50</BankLoansSegregated>
+            <BankLoansNonSegregated>25</BankLoansNonSegregated>
+            <ShortTermSubLoan>25</ShortTermSubLoan>
+            <LongTermSubLoan>0</LongTermSubLoan>
+        </LoansWithin1year>
+        <Total>250</Total>
+    </CurrentLiabilities>
+    <NetCurrentAssets>2100</NetCurrentAssets>
+    <LongTermLiabilities>
+        <Creditors>80</Creditors>
+        <LoansAfter1year>
+            <BankLoansSegregated>70</BankLoansSegregated>
+            <BankLoansNonSegregated>50</BankLoansNonSegregated>
+            <ShortTermSubLoan>0</ShortTermSubLoan>
+            <LongTermSubLoan>0</LongTermSubLoan>
+        </LoansAfter1year>
+        <TotalLongTermLiabilities>200</TotalLongTermLiabilities>
+    </LongTermLiabilities>
+
+    <TotalAssetsLiabilities>92430</TotalAssetsLiabilities>
+
+    <Capital>
+        <IncorporatedEntities>
+            <OrdinaryShares>10000</OrdinaryShares>
+            <NonCumulativePreferenceShares>
+                <Fixed>5000</Fixed>
+                <NonFixed>0</NonFixed>
+            </NonCumulativePreferenceShares>
+            <CumulativePreferenceShares>
+                <Fixed>5000</Fixed>
+                <NonFixed>0</NonFixed>
+                <Total>5000</Total>
+            </CumulativePreferenceShares>
+            <SharePremiumAccount>1000</SharePremiumAccount>
+            <OtherReserves>800</OtherReserves>
+            <RevaluationReserve>200</RevaluationReserve>
+            <RetainedEarnings>7000</RetainedEarnings>
+            <ProfitLossCurrentYear>
+                <ExternallyVerified>62930</ExternallyVerified>
+                <UnverifiedTradingBook>500</UnverifiedTradingBook>
+                <UnverifiedNonTradingBook>0</UnverifiedNonTradingBook>
+            </ProfitLossCurrentYear>
+            <TotalCapital>92430</TotalCapital>
+            <OffBalanceSheet>
+                <Item>
+                    <ItemType>OTCs</ItemType>
+                    <Value>1000</Value>
+                </Item>
+                <Item>
+                    <ItemType>Derivatives</ItemType>
+                    <Value>2000</Value>
+                </Item>
+            </OffBalanceSheet>
+        </IncorporatedEntities>
+
+        <PartnershipsSoleTraders>
+            <CapitalAccount>92000</CapitalAccount>
+            <RetainedEarnings>200</RetainedEarnings>
+            <CurrentAccountCurrentYear>
+                <ExternallyVerified>100</ExternallyVerified>
+                <UnverifiedTradingBook>80</UnverifiedTradingBook>
+                <UnverifiedNonTradingBook>50</UnverifiedNonTradingBook>
+            </CurrentAccountCurrentYear>
+            <TotalCapital>92430</TotalCapital>
+            <OffBalanceSheet>
+                <Item>
+                    <ItemType>OTCs</ItemType>
+                    <Value>1000</Value>
+                </Item>
+                <Item>
+                    <ItemType>Derivatives</ItemType>
+                    <Value>2000</Value>
+                </Item>
+            </OffBalanceSheet>
+        </PartnershipsSoleTraders>
+
+        <LLPs>
+            <PartnersCashCapitalAccounts>92000</PartnersCashCapitalAccounts>
+            <PartnersCurrentAccounts>430</PartnersCurrentAccounts>
+            <TotalPartnersCapital>92430</TotalPartnersCapital>
+            <OffBalanceSheet>
+                <Item>
+                    <ItemType>OTCs</ItemType>
+                    <Value>1000</Value>
+                </Item>
+                <Item>
+                    <ItemType>Derivatives</ItemType>
+                    <Value>2000</Value>
+                </Item>
+            </OffBalanceSheet>
+        </LLPs>
+
+    </Capital>
+
+</FSA029-BalanceSheet>
