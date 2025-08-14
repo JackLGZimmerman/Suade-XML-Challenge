@@ -60,7 +60,7 @@ From the command line:
 python validate_fsa029.py <schema_dir> <submission_file>
 ```
 
-Example:
+Used Example:
 ```bash
 python validate_fsa029.py schemas samples/FSA029-Sample-Valid.xml
 ```
@@ -101,10 +101,11 @@ to the schema but ended up finding something incorrect. We can could check the .
 how that element is failing, by name, order, occurence, etc and then update the XML based on that error similar to 
 how we handled changing the `schemaLocation` when accounting for `/CommonTypes/v14/`
 
-(c) **Why the regulator included an invalid example**  
+(c) **Why the regulator included an invalid example**
 If there was some change in the past to the file structure, the regulator may be showing that the files could contain 
 unexpected fields (legacy fields?) that we will need to handle. They might also be common mistakes, and help 
 developers to understand these validation failures.
+
 ---
 
 ## Notes
